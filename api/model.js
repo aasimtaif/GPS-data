@@ -1,4 +1,4 @@
-const pool = require("../config/Database");
+const pool = require("../config/DataBase");
 
 const creteUserQuery = `INSERT INTO users ( username, email, password) VALUES (?,?,?)`;
 const getAllUsersQuery = `SELECT * FROM users`;

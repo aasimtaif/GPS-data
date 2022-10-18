@@ -2,6 +2,7 @@
 const express = require("express");
 require("dotenv").config();
 const PORT = process.env.PORT || 4114;
+const routers= require("./api/router");
 const app = express()
 const cors = require("cors");
 
@@ -14,7 +15,7 @@ app.use(cors(corsOptions));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+app.use('/api', routers)
 app.get('/', (req, res) => {
     res.send(`Hello World! on ${PORT}`);
 })

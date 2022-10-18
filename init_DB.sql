@@ -1,23 +1,23 @@
 SHOW DATABASES;
 
 CREATE DATABASE IF NOT EXISTS nodejs_application;
-
 USE nodejs_application;
+SHOW TABLES;
 
 CREATE TABLE IF NOT EXISTS users(
     id INT(11) UNIQUE NOT NULL AUTO_INCREMENT,
-    username VARCHAR(10) NOT NULL,
-    email VARCHAR(20) NOT NULL,
-    password VARCHAR(20) NOT NULL,
+    username VARCHAR(20) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS gps_data(
     id INT(11) UNIQUE NOT NULL AUTO_INCREMENT,
-    DeviceId VARCHAR(10),
-    DeviceType VARCHAR(10),
-    Timing VARCHAR(16),
-    Location VARCHAR(3),
+    DeviceId VARCHAR(20),
+    DeviceType VARCHAR(20),
+    Timing VARCHAR(20),
+    Location VARCHAR(8),
     PRIMARY KEY(id)
 );
 
@@ -25,6 +25,7 @@ INSERT INTO
     gps_data (
         DeviceId,
         DeviceType,
+        Timing,
         Location
     )
 VALUES

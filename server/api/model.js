@@ -5,6 +5,7 @@ const getAllUsersQuery = `SELECT * FROM users`;
 const deleteUserQuery = `DELETE FROM users WHERE id = ?`;
 const getUserByEmailQuery = `SELECT * FROM users WHERE email = ?`;
 const getGpsDataQuery = `SELECT * FROM gps_data`;
+const getGpsDataByIdQuery = `SELECT * FROM gps_data WHERE id = ?`;
 
 module.exports = {
     createUserService: (body, callBack) => {
@@ -48,6 +49,14 @@ module.exports = {
     },
     getGpsDataService: (callBack) => {
         pool.query(getGpsDataQuery, [], (err, results, fields) => {
+            if (err) {
+                return callBack(err);
+            }
+            return callBack(null, results);
+        });
+    },
+    getGpsDataByIdService: (id,callBack) => {
+        pool.query(getGpsDataByIdQuery, [id], (err, results, fields) => {
             if (err) {
                 return callBack(err);
             }

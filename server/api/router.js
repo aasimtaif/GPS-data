@@ -1,4 +1,4 @@
-const { createUser, getAllUsers, deleteUser, logIn, getGpsData} = require('./controller');
+const { createUser, getAllUsers, deleteUser, logIn, getGpsData , getGpsDataById} = require('./controller');
 const { validateToken } = require('../auth/tokenValidation');
 const router = require('express').Router();
 // router.use(validateToken);
@@ -11,5 +11,6 @@ router.post('/login', logIn);
 router.get('/users',validateToken, getAllUsers);
 router.delete('/user/:id',validateToken, deleteUser);
 router.get('/gps',validateToken, getGpsData);
+router.get('/gps/:id',validateToken, getGpsDataById);
 
 module.exports = router;

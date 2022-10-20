@@ -2,12 +2,12 @@
 const express = require("express");
 require("dotenv").config();
 const PORT = process.env.PORT || 4114;
-const routers= require("./api/router");
+const routers = require("./api/router");
 const app = express()
 const cors = require("cors");
 
 var corsOptions = {
-    origin: ["*","http://localhost:3000"],
+    origin: ["*", "http://localhost:3000"],
     optionsSuccessStatus: 200 // For legacy browser support
 }
 

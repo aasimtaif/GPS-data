@@ -7,17 +7,32 @@ import { useSelector } from "react-redux";
 import DeviceData from "./components/DeviceData";
 function App() {
     const user = useSelector((state) => state);
+    const [ loggedUser, setLoggedUser ] = useState(user);
     const [isAuth, setIsAuth] = useState(false);
+
+    useEffect(() => {
+        const locallySavedUser = window.localStorage.getItem("user");
+        if (locallySavedUser) {
+            setLoggedUser(locallySavedUser)
+        }
+    }, []);
+
+    useEffect(() => {
+        const locallySavedUser = window.localStorage.getItem("user");
+        if (locallySavedUser) {
+            setLoggedUser(locallySavedUser)
+        }
+    }, [user]);
+
     useEffect(() => {
         const token = window.localStorage.getItem("token");
-        if (user.authorised && token) {
+        if (loggedUser && token) {
             setIsAuth(true);
-            console.log(user);
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         } else {
             delete axios.defaults.headers.common["Authorization"];
         }
-    }, [user]);
+    }, [loggedUser]);
 
     return (
         <div className="App">

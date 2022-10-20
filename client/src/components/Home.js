@@ -10,11 +10,13 @@ export default function Home() {
             }, 4000);
         });
     }, []);
+    
     const row = gpsData?.map((data) => {
         return (
             <>
                 <Link to={`/gps/${data.DeviceId}`}>
                     <tr key={data.id}>
+                    <th scope="row">{data.id}</th>
                         <td>{data.DeviceId}</td>
                         <td> -- </td>
                         <td>{data.DeviceType}</td>
@@ -35,7 +37,7 @@ export default function Home() {
                 <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                         <div className="overflow-x-auto">
-                            <table className="min-w-full">
+                            <table className="min-w-full ">
                                 <thead>
                                     <tr>
                                         <th
